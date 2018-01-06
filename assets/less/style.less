@@ -1,0 +1,120 @@
+@red: #e83f3f;
+@light-grey: #c3a9a9;
+@dark-grey: #474747;
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,800&subset=cyrillic');
+.text(@font-weight: 400) {
+	font-family: "Open Sans", sans-serif;
+	font-size: 16px;
+	font-weight: @font-weight;
+}
+
+.background() {
+	background: none;
+	box-shadow: none;
+	border: none;
+}
+
+html,
+body {
+    margin: 0 auto;
+    padding: 0;
+}
+
+body {
+	.text;
+}
+
+header .navbar {
+	.text(600);
+	.background;
+	height: 86px;
+	padding-top: 10px;
+	
+	.container {
+		padding: 0;
+
+		.navbar-collapse {
+			position: relative;
+			
+			.navbar-nav {
+				width: 700px;
+					
+				li {
+					padding: 0;
+					width: 25%;
+				}
+
+				.active a {
+					&,
+					&:hover, 
+					&:focus {
+					color: @red;
+					.text(800);
+					.background;
+					}
+				}
+				
+				a{
+					text-align: center;
+					
+					&:hover, 
+					&:focus {
+						color: @red;
+						.text(800);
+						.background;
+					}
+				
+				}
+			}
+	
+			.navbar-form {
+				position: absolute;
+				right: 0;
+				
+				.input-group {
+					.form-control {
+						.text(400);
+						font-style: italic;
+						.background;
+						width: 245px;
+						background-color: white;
+					}
+					
+					.input-group-btn {
+						text-align: right;
+								
+						.btn-default {
+							.background;
+							transform: scale(2);
+							width: 30px;
+							
+							.glyphicon-search {
+								opacity: 0.5;
+							}
+							
+							&:hover,
+							&:focus {
+								color: @red;
+								.text(800);
+								.background;
+								
+								.glyphicon-search {
+									opacity: 1;
+								}
+							}
+						}
+					}
+				}
+			} 
+		}
+	}
+}
+
+/*TODO: дописать js для hidden и добавить границу при фокус*/
+
+
+
+	
+
+
