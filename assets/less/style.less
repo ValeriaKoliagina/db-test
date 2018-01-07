@@ -1,6 +1,7 @@
 @red: #e83f3f;
-@light-grey: #c3a9a9;
 @dark-grey: #474747;
+@light-grey: #bcbcbc;
+@white: #fff;
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,800&subset=cyrillic');
 .text(@font-weight: 400) {
@@ -23,95 +24,230 @@ body {
 
 body {
 	.text;
+	background-image: url("/assets/img/background.png");
 }
 
-header .navbar {
-	.text(600);
-	.background;
-	height: 86px;
-	padding-top: 10px;
+header {
+	background-color: @white;
 	
-	.container {
-		padding: 0;
-
-		.navbar-collapse {
-			position: relative;
+	.navbar {
+		.text(600);
+		.background;
+		height: 86px;
+		padding-top: 10px;
+		margin-bottom: 0;
+		
+		.container {
+			padding: 0;
 			
-			.navbar-nav {
-				width: 700px;
-					
-				li {
-					padding: 0;
-					width: 25%;
-				}
+			.navbar-header {
+				position: absolute;
+			}
 
-				.active a {
-					&,
-					&:hover, 
-					&:focus {
-					color: @red;
-					.text(800);
-					.background;
-					}
-				}
+			.navbar-collapse {
+				position: relative;
 				
-				a{
-					text-align: center;
-					
-					&:hover, 
-					&:focus {
+				.navbar-nav {
+					width: 700px;
+						
+					li {
+						padding: 0;
+						width: 25%;
+					}
+
+					.active a {
+						&,
+						&:hover, 
+						&:focus {
 						color: @red;
 						.text(800);
 						.background;
-					}
-				
-				}
-			}
-	
-			.navbar-form {
-				position: absolute;
-				right: 0;
-				
-				.input-group {
-					.form-control {
-						.text(400);
-						font-style: italic;
-						.background;
-						width: 245px;
-						background-color: white;
+						}
 					}
 					
-					.input-group-btn {
-						text-align: right;
-								
-						.btn-default {
+					a{
+						text-align: center;
+						
+						&:hover, 
+						&:focus {
+							color: @red;
+							.text(800);
 							.background;
-							transform: scale(2);
-							width: 30px;
-							
-							.glyphicon-search {
-								opacity: 0.5;
-							}
-							
-							&:hover,
-							&:focus {
-								color: @red;
-								.text(800);
+						}
+					
+					}
+				}
+		
+				.navbar-form {
+					position: absolute;
+					right: 0;
+					
+					.input-group {
+						.form-control {
+							.text(400);
+							font-style: italic;
+							.background;
+							width: 245px;
+							background-color: @white;
+						}
+						
+						.input-group-btn {
+							text-align: right;
+									
+							.btn-default {
 								.background;
+								transform: scale(2);
+								width: 30px;
 								
 								.glyphicon-search {
-									opacity: 1;
+									opacity: 0.5;
+								}
+								
+								&:hover,
+								&:focus {
+									color: @red;
+									.text(800);
+									.background;
+									
+									.glyphicon-search {
+										opacity: 1;
+									}
 								}
 							}
 						}
 					}
-				}
-			} 
+				} 
+			}
 		}
 	}
 }
 
-/*TODO: дописать js для hidden и добавить границу при фокус*/
+#main-content .jumbotron {
+	.background;
+	overflow: hidden;
+	padding: 0;
+	width: 100%;
+	
+	.slider {
+		position: relative;
+
+		input[type=radio] {
+			display: none;
+		}
+		
+		.slider-controls {
+			margin-top: 10px;
+			position: absolute;
+			bottom: 15%; 
+			right: 50%;
+		
+			label {
+				display: inline-block;
+				width: 10px;
+				height: 10px;
+				border-radius: 50%;
+				margin: 0 3px;
+				cursor: pointer;
+				border: 10px solid @light-grey;
+				background-color: @light-grey;
+			}
+		}
+		
+		.slider-inner {
+			overflow: hidden;
+		}
+		
+		.slider-slides {
+			width: 4700px;
+			transition: transform 1.5s ease;
+			
+			.slide {
+				width: 1150px;
+				margin-bottom: 50px;	
+				display: inline-block;
+				
+				div {
+					.text(600);
+					font-size: 35px;
+					line-height: 1.2;
+					position: absolute;
+					top: 30%;
+				}
+				
+				a {
+					background-color: @red;
+					color: @white;
+					border: 1px solid @red;
+					border-radius: 50px;
+					position: absolute;
+					top: 44%;
+					.text(600);
+					text-transform: uppercase;
+					font-size: 13px;
+					padding: 15px 20px;
+				}
+			}
+				
+			img {
+				margin-top: -95px;
+				float: right;
+			}
+			
+		}
+	}
+}
+
+#image1:checked ~ .slider-controls label[for="image1"],
+#image2:checked ~ .slider-controls label[for="image2"],
+#image3:checked ~ .slider-controls label[for="image3"],
+#image4:checked ~ .slider-controls label[for="image4"] {
+    background-color: @red;
+	border-color: @red;
+}
+
+#image1:checked ~ .slider-inner .slider-slides {
+    transform: translate(0);
+}
+#image2:checked ~ .slider-inner .slider-slides {
+    transform: translate(-1154px);
+}
+#image3:checked ~ .slider-inner .slider-slides {
+    transform: translate(-2308px);
+}
+#image4:checked ~ .slider-inner .slider-slides {
+    transform: translate(-3462px);
+}
+
+
+.prev, .next {
+	cursor: pointer;
+	position: absolute;
+	top: 67%;
+	color: @light-grey;
+	font-weight: bold;
+	font-size: 40px;
+	border-radius: 0 3px 3px 0;
+	padding: 25px;
+
+	&:hover {
+		color: @red;
+		text-decoration: none;
+	} 
+}
+
+.next {
+	right: 0;
+	margin-right: 20px;
+}
+
+.prev {
+	left: 0;
+	margin-left: 20px;
+}
+
+
+
+/*TODO: дописать js для hidden и добавить границу при фокус добавить opacity и само меняется через определенное время*/
 
 
 
