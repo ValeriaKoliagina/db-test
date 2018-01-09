@@ -2,6 +2,7 @@
 @dark-grey: #474747;
 @light-grey: #bcbcbc;
 @white: #fff;
+@white-transparent: rgba(255, 255, 255, 0.8);
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,800&subset=cyrillic');
 .text(@font-weight: 400) {
@@ -32,6 +33,10 @@ body {
 
 .container {
 	padding: 0 90px;
+}
+
+.small {
+	display: none;
 }
 
 header {
@@ -85,47 +90,47 @@ header {
 				
 				}
 			}
+		}
 		
-			.navbar-form {
-				position: absolute;
-				right: 0;
+		.navbar-form {
+			position: absolute;
+			right: 0;
+			
+			.input-group {
+				.form-control {
+					.text(400);
+					font-style: italic;
+					.background;
+					width: 245px;
+					background-color: @white;
+				}
 				
-				.input-group {
-					.form-control {
-						.text(400);
-						font-style: italic;
-						.background;
-						width: 245px;
-						background-color: @white;
-					}
-					
-					.input-group-btn {
-						text-align: right;
-								
-						.btn-default {
-							.background;
-							transform: scale(1.5);
-							width: 30px;
-															
-							.glyphicon-search {
-								opacity: 0.5;
-							}
+				.input-group-btn {
+					text-align: right;
 							
-							&:hover,
-							&:focus {
-								color: @red;
-								.text(800);
-								.background;
-								
-								.glyphicon-search {
-									opacity: 1;
-								}
+					.btn-default {
+						.background;
+						transform: scale(1.5);
+						width: 30px;
+														
+						.glyphicon-search {
+							opacity: 0.5;
+						}
+						
+						&:hover,
+						&:focus {
+							color: @red;
+							.text(800);
+							.background;
+							
+							.glyphicon-search {
+								opacity: 1;
 							}
 						}
 					}
 				}
-			} 
-		}
+			}
+		} 
 	}
 }
 
@@ -227,13 +232,11 @@ header {
 	}
 
 	.next {
-		right: 0;
-		margin-right: 30px;
+		right: 30px;
 	}
 
 	.prev {
-		left: 0;
-		margin-left: 30px;
+		left: 30px;
 	}
 }
 
@@ -248,16 +251,46 @@ header {
 #image1:checked ~ .slider-inner .slider-slides {
     transform: translate(0);
 }
+#image1:checked ~ .slider-inner .slider-slides .slide:nth-child(1) {
+	animation-name: lighter;
+	animation-duration: 1.5s;
+	animation-fill-mode: backwards;
+}
 #image2:checked ~ .slider-inner .slider-slides {
     transform: translate(-1119px);
+}
+#image2:checked ~ .slider-inner .slider-slides .slide:nth-child(2) {
+	animation-name: lighter;
+	animation-duration: 1.5s;
+	animation-fill-mode: backwards;
 }
 #image3:checked ~ .slider-inner .slider-slides {
     transform: translate(-2238px);
 }
+#image3:checked ~ .slider-inner .slider-slides .slide:nth-child(3) {
+	animation-name: lighter;
+	animation-duration: 1.5s;
+	animation-fill-mode: backwards;
+}
 #image4:checked ~ .slider-inner .slider-slides {
     transform: translate(-3357px);
 }
-
+#image4:checked ~ .slider-inner .slider-slides .slide:nth-child(4) {
+	animation-name: lighter;
+	animation-duration: 1.5s;
+	animation-fill-mode: backwards;
+}
+@keyframes lighter {
+	0% {
+		opacity: 1;
+	}
+    50% {
+        opacity: 0.3;
+    }
+	100% {
+		opacity: 1;
+	}
+}
 .panel-footer {
 	.text(800);
 	font-size: 14px;
@@ -312,7 +345,11 @@ header {
 					padding-top: 5px;
 								
 					.active a {
-						font-size: 11px;
+						&,
+						&:hover,
+						&:focus {
+							font-size: 11px;
+						}
 					}
 					
 					a {
@@ -325,7 +362,9 @@ header {
 				}
 			
 				.navbar-form .input-group .form-control {
-					width: 100px;
+					width: 150px;
+					font-size: 13px;
+					top: 4px;
 				}
 			}
 		}
@@ -393,6 +432,24 @@ header {
 }
 
 @media (max-width: 767px) {
+	.large {
+		display: none;
+	}
+	.small {
+		display: block;
+		top: 0;
+		border: none;
+		width: 60%;
+		font-size: 13px;
+	}
+	
+	header .navbar .navbar-form .input-group .input-group-btn .btn-default {
+		transform: scale(1.8);
+		right: 70px;		
+		top: 0%;
+		padding-top: 5px;
+	} 
+
 	.container {
 		padding: 0 20px;
 	}
@@ -425,18 +482,24 @@ header {
 				}
 			}
 			
-			/* .navbar-collapse {
-				.navbar-form .input-group .input-group-btn .btn-default {
-					padding-top: 10px;
-					transform: scale(1.1);
-				}
-				
+			.navbar-collapse {
+				z-index: 2;
+				background-color: @white-transparent;
+				position: absolute;
+				top: 60px;
+				left: 0;
+
+
 				.navbar-nav {
-					width: 420px;
-					padding-top: 5px;
+					padding-left: 20px;
 								
 					.active a {
-						font-size: 11px;
+						&,
+						&:hover,
+						&:focus {
+							font-size: 11px;
+							text-align: left;
+						}
 					}
 					
 					a {
@@ -444,13 +507,11 @@ header {
 						&:hover,
 						&:focus {
 							font-size: 11px;
+							text-align: left;
 						}
 					}
 				}
-		
-			.navbar-form .input-group .form-control {
-				width: 100px;
-			} */
+			}
 		}
 	}
 	
@@ -510,10 +571,10 @@ header {
 			top: 30%;
 		}
 		.prev {
-			margin-left: 20px;
+			left: 20px;
 		}
 		.next {
-			margin-right: 20px;
+			right: 20px;
 		}
 	}
 	
@@ -537,12 +598,3 @@ header {
 		transform: translate(-72.75%);
 	}
 }
-
-
-/*TODO: дописать js для hidden и добавить границу при фокус добавить opacity и само меняется через определенное время*/
-
-
-
-	
-
-

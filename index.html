@@ -7,7 +7,8 @@
 		<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 		<link rel="stylesheet/less" type="text/css" href="assets/less/style.less">
 		<script src="assets/js/less.min.js" type="text/javascript"></script>
-		<!-- <script src="assets/js/bootstrap.min.js"></script> -->
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/bootstrap.min.js"></script>
 	</head>
 	<body>
 		<header>
@@ -17,6 +18,15 @@
 						<a href="index.html">
 							<img src="assets/img/logo.png"/>
 						</a>
+						<form class="navbar-form navbar-right small">
+							 <div class="input-group">
+								<input type="search" class="form-control hidden" placeholder="/ Введите запрос" onblur="hideSearch(this)">
+								<span class="input-group-btn">
+									<a href="#" class="btn btn-default" type="button" onclick="showSearch(this)"><span class="glyphicon glyphicon-search"></span>
+									</a>
+								</span>
+							</div>
+						</form>
 						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
 							<span class="sr-only">Toggle navigation</span>
 							<span class="icon-bar"></span>
@@ -32,11 +42,11 @@
 							<li><a href="#">Партнёрам</a></li>
 							<li><a href="#">Контакты</a></li>
 						</ul>
-						<form class="navbar-form navbar-right">
+						<form class="navbar-form navbar-right large">
 							 <div class="input-group">
-								<input type="search" class="form-control hidden" placeholder="/ Введите запрос">
+								<input type="search" class="form-control hidden" placeholder="/ Введите запрос" onblur="hideSearch(this)">
 								<span class="input-group-btn">
-									<a href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span>
+									<a href="#" class="btn btn-default" type="button" onclick="showSearch(this)"><span class="glyphicon glyphicon-search"></span>
 									</a>
 								</span>
 							</div>
@@ -53,44 +63,44 @@
 					<input type="radio" name="image" id="image2">
 					<input type="radio" name="image" id="image3">
 					<input type="radio" name="image" id="image4">
-						<div class="slider-inner">
-							<div class="slider-slides">
-								<div class="slide">
-									<img src="assets/img/meat.png"/>
-									<div>Ваш выбор,<br> наша работа!
-									</div>
-										<a class="btn btn-default" href="#" role="button">Узнать подробнее</a>
+					<div class="slider-inner">
+						<div class="slider-slides">
+							<div class="slide">
+								<img src="assets/img/meat.png"/>
+								<div>Ваш выбор,<br> наша работа!
 								</div>
-								<div class="slide">
-									<img src="assets/img/meat.png"/>
-									<div>Ваш выбор,<br> наша работа!
-									</div>
-										<a class="btn btn-default" href="#" role="button">Узнать подробнее</a>
+									<a class="btn btn-default" href="#" role="button">Узнать подробнее</a>
+							</div>
+							<div class="slide">
+								<img src="assets/img/meat.png"/>
+								<div>Ваш выбор,<br> наша работа!
 								</div>
-								<div class="slide">
-									<img src="assets/img/meat.png"/>
-									<div>Ваш выбор,<br> наша работа!
-									</div>
-										<a class="btn btn-default" href="#" role="button">Узнать подробнее</a>
+									<a class="btn btn-default" href="#" role="button">Узнать подробнее</a>
+							</div>
+							<div class="slide">
+								<img src="assets/img/meat.png"/>
+								<div>Ваш выбор,<br> наша работа!
 								</div>
-								<div class="slide">
-									<img src="assets/img/meat.png"/>
-									<div>Ваш выбор,<br> наша работа!
-									</div>
-										<a class="btn btn-default" href="#" role="button">Узнать подробнее</a>
+									<a class="btn btn-default" href="#" role="button">Узнать подробнее</a>
+							</div>
+							<div class="slide">
+								<img src="assets/img/meat.png"/>
+								<div>Ваш выбор,<br> наша работа!
 								</div>
+									<a class="btn btn-default" href="#" role="button">Узнать подробнее</a>
 							</div>
 						</div>
-						<div class="slider-controls">
-							<label for="image1"></label>
-							<label for="image2"></label>
-							<label for="image3"></label>
-							<label for="image4"></label>
-						</div>
+					</div>
+					<div class="slider-controls">
+						<label for="image1"></label>
+						<label for="image2"></label>
+						<label for="image3"></label>
+						<label for="image4"></label>
+					</div>
 				</div>
 			</div>
-			<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-			<a class="next" onclick="plusSlides(1)">&#10095;</a>
+			<a class="prev" onclick="previousSlide()">&#10094;</a>
+			<a class="next" onclick="nextSlide()">&#10095;</a>
 		</div>
 		
 		<footer class="panel-footer">
@@ -101,6 +111,7 @@
 					<span>Охота Берестейская</span> 
 				</div>
 			</div>
-		</footer>		
+		</footer>	
+		<script src="assets/js/script.js"></script>
 	</body>
 </html>
