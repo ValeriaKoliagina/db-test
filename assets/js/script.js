@@ -36,6 +36,10 @@ function previousSlide() {
 	time = setInterval(nextSlide, 7500);
 }
 
+function resetTime() {
+	clearInterval(time);
+	time = setInterval(nextSlide, 7500);
+}
 
 
 
